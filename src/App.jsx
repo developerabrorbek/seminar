@@ -27,47 +27,48 @@ const App = () => {
   };
 
   return (
-    <div className="shadow m-5 p-5 flex-row gap-5 justify-content-center">
-      <h2>Seminar ishtirokchilari</h2>
-      <div className="">
-        <div className="d-flex gap-4 justify-content-end">
+    <div className="m-2 p-2 flex-row w-full gap-5 justify-content-center">
+      <h2 className="mb-4">Seminar ishtirokchilari ro&apos;yhati:</h2>
+      <div>
+        <div className="d-flex flex-row gap-2 mb-3 justify-content-end">
           <button className="btn btn-primary" onClick={handleDownload}>
-            Excel yuklash
+            Excel
           </button>
           <AddUserModal />
         </div>
-        <table className="table w-full">
-          <thead>
-            <tr>
-              <th scope="col">№</th>
-              <th scope="col">FIO</th>
-              <th scope="col">Telefon nomeri</th>
-              <th scope="col">Ish joyi</th>
-              <th scope="col">O&apos;chirish</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user) => {
-              return (
-                <>
-                  <tr>
-                    {" "}
-                    <th scope="row">{user.tartib_raqam}</th>
-                    <td>{user.name}</td>
-                    <td>{user.number}</td>
-                    <td>{user.work}</td>
-                    <td
-                      type="button"
-                      onClick={() => handleDelete(user.tartib_raqam)}
-                    >
-                      <img width={29} src={DeleteImg} alt="Delete user" />
-                    </td>
-                  </tr>
-                </>
-              );
-            })}
-          </tbody>
-        </table>
+        <div className="overflow-scroll">
+          <table className="table table-bordered table-hover">
+            <thead className="table-primary">
+              <tr>
+                <th scope="col">№</th>
+                <th scope="col">FIO</th>
+                <th scope="col">Telefon nomeri</th>
+                <th scope="col">Ish joyi</th>
+                <th scope="col">O&apos;chirish</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users?.length && users.map((user) => {
+                return (
+                  <>
+                    <tr>
+                      {" "}
+                      <th scope="row">{user.tartib_raqam}</th>
+                      <td>{user.name}</td>
+                      <td>{user.number}</td>
+                      <td>{user.work}</td>
+                      <td onClick={() => handleDelete(user.tartib_raqam)}>
+                        <div>
+                          <img width={29} src={DeleteImg} alt="Delete user" />{" "}
+                        </div>
+                      </td>
+                    </tr>
+                  </>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
