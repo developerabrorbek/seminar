@@ -1,3 +1,5 @@
+import toast from "react-hot-toast";
+
 const AddUserModal = () => {
   const handleAddUser = async (e) => {
     e.preventDefault();
@@ -11,12 +13,14 @@ const AddUserModal = () => {
     const data = [
       ...firstUsers,
       {
-        tartib_raqam: firstUsers.length + 1,
+        tartib_raqam: firstUsers?.length ? firstUsers.at(-1).tartib_raqam + 1 : 1,
         name,
         number,
         work,
       },
     ];
+
+    toast.success("Ishtirokchi qo'shildi")
 
     localStorage.setItem("users", JSON.stringify(data));
 
@@ -41,7 +45,7 @@ const AddUserModal = () => {
         aria-labelledby="ishtirokchiqushishLabel"
         aria-hidden="true"
       >
-        <div className="modal-dialog">
+        <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
             <div className="modal-header">
               <h1 className="modal-title fs-5" id="ishtirokchiqushishLabel">
