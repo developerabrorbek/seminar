@@ -24,7 +24,9 @@ const AddUserModal = () => {
 
     localStorage.setItem("users", JSON.stringify(data));
 
-    window.location.reload();
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000)
   };
 
   return (

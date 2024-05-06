@@ -25,7 +25,9 @@ const App = () => {
 
       toast.success("Ishtirokchi o'chirildi");
 
-      window.location.reload();
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000)
     }
   };
 
